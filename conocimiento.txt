@@ -1,0 +1,10 @@
+# Base de conocimiento del chatbot (EJEMPLO).
+# Las líneas que empiezan con "# " son comentarios y el programa las ignora.
+# Para agregar un tema, copia el bloque de abajo sin los "# " y completa tus datos.
+#
+# ### Cómo restablecer una contraseña
+# keywords: contraseña, clave, olvidé, restablecer, acceso
+# 1. Entra a la página de inicio de sesión y pulsa "Olvidé mi contraseña".
+# 2. Escribe tu correo institucional y revisa tu bandeja de entrada.
+# 3. Abre el enlace del mensaje y define una contraseña nueva.
+# Si no llega el correo en 10 minutos, contacta a soporte.

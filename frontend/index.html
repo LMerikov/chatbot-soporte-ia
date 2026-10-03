@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Asistente de soporte técnico para Universidad de los Andes y Clínica Uandes">
+    <title>Soporte Técnico - Uandes</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Preconnect para mejor performance -->
+    <link rel="preconnect" href="http://localhost:5050">
+</head>
+<body>
+    <!-- Chat Widget Button -->
+    <button
+        class="chat-widget-button"
+        id="chatWidgetButton"
+        aria-label="Abrir chat de soporte"
+        aria-expanded="false"
+        aria-controls="chatWidget"
+    >
+        <svg class="icon-chat" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+            <circle cx="12" cy="10" r="1.5"/>
+            <circle cx="8" cy="10" r="1.5"/>
+            <circle cx="16" cy="10" r="1.5"/>
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+        </svg>
+        <span class="notification-badge" id="notificationBadge">1</span>
+    </button>
+
+    <!-- Chat Widget Container -->
+    <div class="chat-widget-container" id="chatWidget" role="dialog" aria-label="Chat de soporte">
+        <!-- Header Profesional (Una Línea) -->
+        <div class="chat-header">
+            <div class="header-left">
+                <div class="header-avatar galaxy-avatar" aria-hidden="true"></div>
+                <div class="header-info">
+                    <h2 class="header-title">Asistente de Soporte</h2>
+                    <p class="header-subtitle">
+                        <span class="status-indicator">
+                            <span class="status-dot" aria-hidden="true"></span>
+                            <span class="status-text">En línea</span>
+                        </span>
+                        <span style="opacity: 0.6;">• Powered by OpenAI</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button
+                    class="header-btn"
+                    id="themeToggle"
+                    title="Cambiar tema"
+                    aria-label="Cambiar tema claro/oscuro"
+                >
+                    🌙
+                </button>
+
+                <button
+                    class="header-btn"
+                    id="exportChat"
+                    title="Exportar conversación"
+                    aria-label="Exportar conversación"
+                    style="position: relative;"
+                >
+                    📥
+                    <!-- Export Menu -->
+                    <div class="export-menu" role="menu">
+                        <div class="export-menu-item" onclick="window.chatbot?.exportChat('json')" role="menuitem">
+                            📄 Exportar JSON
+                        </div>
+                        <div class="export-menu-item" onclick="window.chatbot?.exportChat('txt')" role="menuitem">
+                            📝 Exportar TXT
+                        </div>
+                    </div>
+                </button>
+
+                <button
+                    class="header-btn"
+                    id="clearHistory"
+                    title="Borrar historial"
+                    aria-label="Borrar historial de conversación"
+                >
+                    🗑️
+                </button>
+            </div>
+        </div>
+
+        <!-- Messages Area -->
+        <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-atomic="false">
+            <div class="welcome-message">
+                <div class="welcome-icon galaxy-welcome" aria-hidden="true"></div>
+                <h3>¡Hola! 👋</h3>
+                <p>Soy tu asistente de soporte técnico para la Universidad de los Andes y Clínica Uandes.</p>
+                <p style="margin-top: 12px; font-size: 13px;">¿En qué puedo ayudarte hoy?</p>
+                <!-- Quick questions will be injected here by JS -->
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="typing-indicator" id="typingIndicator" aria-label="El asistente está escribiendo">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="chat-input-area">
+            <!-- Suggestions Dropdown -->
+            <div class="suggestions-dropdown" id="suggestionsDropdown" role="listbox">
+                <!-- Suggestions will be injected here -->
+            </div>
+
+            <input
+                type="text"
+                class="chat-input"
+                id="chatInput"
+                placeholder="Escribe tu pregunta..."
+                aria-label="Escribe tu mensaje"
+                role="textbox"
+                autocomplete="off"
+                maxlength="500"
+            >
+
+            <div class="input-actions">
+                <button
+                    class="chat-send-button"
+                    id="sendButton"
+                    aria-label="Enviar mensaje"
+                >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>
